@@ -1,8 +1,11 @@
-<html lang="zh-TW"><head>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>高中英文拼字學習機 (Spelling Bee)</title>
     <style>
+        /* --- 核心樣式 (保持不變) --- */
         :root{--primary-color:#0ea5e9;--primary-dark:#0284c7;--accent-color:#f59e0b;--bg-color:#f0f9ff;--card-bg:#ffffff;--text-main:#334155;--text-light:#64748b;--vowel-color:#ef4444;--consonant-color:#2563eb;--success:#22c55e;--error:#ef4444}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:var(--bg-color);color:var(--text-main);margin:0;padding:0;min-height:100vh;display:flex;flex-direction:column}header{background-color:var(--primary-color);color:white;padding:10px 15px;box-shadow:0 2px 4px rgba(0,0,0,.1)}.header-content{max-width:800px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}h1{margin:0;font-size:1.1rem;letter-spacing:1px;white-space:nowrap}.header-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.set-select{padding:6px 10px;border-radius:20px;border:none;background:rgba(255,255,255,.9);color:var(--primary-dark);font-weight:700;font-size:.9rem;max-width:150px}.icon-btn{background:rgba(255,255,255,.2);border:none;color:white;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:.2s}.icon-btn:hover{background:rgba(255,255,255,.3)}.icon-btn.danger:hover{background:#ef4444}.add-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:white;padding:6px 12px;border-radius:20px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:5px;transition:.2s}.add-btn:hover{background:rgba(255,255,255,.3)}.tabs{display:flex;max-width:800px;margin:20px auto 0;padding:0 15px;width:100%;gap:5px;overflow-x:auto}.tab-btn{flex:1;padding:12px;background:#e0f2fe;border:none;border-radius:10px 10px 0 0;cursor:pointer;font-weight:700;color:var(--text-light);transition:.2s;font-size:.95rem;white-space:nowrap}.tab-btn.active{background:var(--card-bg);color:var(--primary-dark);box-shadow:0 -2px 5px rgba(0,0,0,.05)}main{flex:1;width:100%;max-width:800px;margin:0 auto;background:var(--card-bg);padding:10px;border-radius:0 0 15px 15px;box-shadow:0 4px 6px rgba(0,0,0,.05);display:flex;flex-direction:row;align-items:center;justify-content:space-between;position:relative;overflow:hidden}.content-container{flex:1;display:flex;flex-direction:column;align-items:center;width:100%;max-width:100%;padding:0 10px}.progress-indicator{font-size:.9rem;color:var(--text-light);background:#f1f5f9;padding:4px 12px;border-radius:20px;margin-bottom:10px;align-self:center}.nav-arrow{background:0 0;border:none;font-size:2.5rem;color:#cbd5e1;cursor:pointer;padding:10px;transition:.2s;user-select:none;display:flex;align-items:center;justify-content:center;height:100%;border-radius:10px}.nav-arrow:hover{color:var(--primary-color);background-color:#f0f9ff}.nav-arrow:active{transform:scale(.9)}.nav-arrow:disabled{color:#f1f5f9;cursor:not-allowed}.card-display{width:100%;text-align:center;margin-bottom:20px}.word-display{font-size:3.5rem;font-weight:700;margin:10px 0;line-height:1.2;min-height:80px;word-break:break-word;display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap}.syllable-display{font-size:1.5rem;color:var(--text-light);margin-bottom:10px;font-family:'Courier New',monospace}.meaning-display{font-size:1.5rem;color:var(--primary-dark);margin-bottom:15px;font-weight:700;display:flex;justify-content:center;align-items:center;gap:10px}.sentence-display{background:#f8fafc;padding:15px;border-radius:10px;border-left:5px solid var(--accent-color);text-align:left;margin:10px 0;font-size:1.1rem;line-height:1.5;width:100%}.sentence-en{display:block;margin-bottom:8px;color:var(--text-main);font-weight:500}.sentence-cn{display:block;font-size:1rem;color:#475569;border-top:1px dashed #cbd5e1;padding-top:5px}.cloze-word{font-weight:700;color:var(--primary-color);margin:0 4px;white-space:nowrap}.cloze-line{display:inline-block;width:40px;border-bottom:2px solid var(--primary-color);margin:0 2px;vertical-align:middle;height:10px}.vowel{color:var(--vowel-color)}.consonant{color:var(--consonant-color)}.btn{background-color:var(--primary-color);color:white;border:none;padding:10px 20px;border-radius:50px;font-size:1rem;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:transform .1s,background .2s;box-shadow:0 2px 4px rgba(0,0,0,.2);margin:5px}.btn:active{transform:scale(.95)}.btn-outline{background:white;color:var(--primary-color);border:2px solid var(--primary-color)}.btn-lg{padding:15px 30px;font-size:1.2rem}.btn-icon{border-radius:50%;width:50px;height:50px;padding:0;justify-content:center}.btn-speaker{background-color:var(--accent-color);width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:none;cursor:pointer;color:white;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .1s}.btn-peek{background-color:#8b5cf6;color:white;padding:8px 16px;border-radius:20px;font-size:.9rem;border:none;cursor:pointer;margin-bottom:10px;box-shadow:0 2px 4px rgba(0,0,0,.2)}.btn-peek:disabled{background-color:#cbd5e1;cursor:default}.letter-pool,.answer-slot{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;min-height:60px;margin:10px 0}.letter-btn{width:45px;height:45px;background:white;border:2px solid var(--text-light);border-radius:8px;font-size:1.2rem;font-weight:700;color:var(--text-main);cursor:pointer;display:flex;justify-content:center;align-items:center;user-select:none;box-shadow:0 2px 0 rgba(0,0,0,.1);transition:.2s}.letter-btn.used{opacity:0;pointer-events:none}.answer-slot{background:#f1f5f9;border-radius:10px;padding:10px;border:2px dashed #cbd5e1}.answer-slot .letter-btn{border-color:var(--primary-color);color:var(--primary-color);background:white}@keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-5px)}100%{transform:translateX(0)}}.shake{animation:shake .4s;border-color:var(--error)!important;color:var(--error)!important;background-color:#fef2f2!important}.input-group{margin:20px 0;width:100%;max-width:400px}input[type=text]{width:100%;padding:15px;font-size:1.5rem;text-align:center;border:2px solid #cbd5e1;border-radius:10px;outline:none}input[type=text]:focus{border-color:var(--primary-color)}.hint-text{font-family:'Courier New',monospace;font-size:2.5rem;letter-spacing:5px;color:var(--primary-color);margin:10px 0;font-weight:700}footer{padding:15px;background:white;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;justify-content:center;align-items:center;position:sticky;bottom:0;gap:10px}.footer-btn-group{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.footer-btn{background-color:#64748b;color:white;border:none;padding:8px 15px;border-radius:5px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:5px}.footer-btn:hover{background-color:#475569}.footer-btn.primary{background-color:var(--primary-color)}.footer-btn.primary:hover{background-color:var(--primary-dark)}.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:center;padding:20px}.modal{background:white;padding:0;border-radius:15px;width:100%;max-width:500px;box-shadow:0 10px 25px rgba(0,0,0,.2);overflow:hidden;display:flex;flex-direction:column;max-height:90vh}.modal-header{padding:20px;background:var(--bg-color);border-bottom:1px solid #e2e8f0}.modal h2{margin:0;color:var(--text-main);text-align:center;font-size:1.4rem}.modal-tabs{display:flex;background:#e2e8f0}.modal-tab-btn{flex:1;padding:10px;border:none;background:0 0;cursor:pointer;font-weight:700;color:var(--text-light)}.modal-tab-btn.active{background:white;color:var(--primary-color)}.modal-body{padding:20px;overflow-y:auto;text-align:center}.form-group{margin-bottom:15px;text-align:left}.form-group label{display:block;margin-bottom:5px;font-weight:700;color:var(--text-light)}.form-group input{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:1rem}textarea.bulk-input{width:100%;height:200px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-family:monospace;font-size:.9rem;resize:vertical}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}.feedback-msg{font-size:1.2rem;font-weight:700;height:30px;margin-top:10px;opacity:0;transition:opacity .3s}.feedback-msg.show{opacity:1}.feedback-msg.correct{color:var(--success)}.feedback-msg.wrong{color:var(--error)}@media (max-width:600px){.word-display{font-size:2.2rem}.btn-lg{width:100%;justify-content:center}.tabs{overflow-x:auto;justify-content:flex-start}.header-content{padding:10px;justify-content:center}.letter-btn{width:38px;height:38px;font-size:1rem}.nav-arrow{font-size:1.8rem;padding:5px}main{padding:5px}.content-container{padding:0 5px}}
     </style>
 </head>
@@ -12,9 +15,8 @@
     <div class="header-content">
         <h1>🎓 高中英文拼字學習機</h1>
         <div class="header-controls">
-            <select id="setSelect" class="set-select" onchange="changeSet()"><option value="0">預設單字 (Default) (2)</option><option value="1">高二期末英文1 (32)</option><option value="2">高二期末英文2 (10)</option><option value="3">高二期末英文3 (12)</option></select>
-            <button id="btnDeleteSet" class="icon-btn danger" onclick="deleteCurrentSet()" title="刪除此群組">🗑️</button>
-            <button class="add-btn" onclick="openModal()">➕ 新增</button>
+            <select id="setSelect" class="set-select" onchange="changeSet()"></select>
+            <button class="add-btn" onclick="openModal()">➕ 臨時新增</button>
         </div>
     </div>
 </header>
@@ -30,16 +32,16 @@
     <button class="nav-arrow" id="btnPrev" onclick="prevWord()" title="上一筆" style="visibility: visible;">❮</button>
 
     <div class="content-container">
-        <div class="progress-indicator">Word <span id="currentNum">1</span> / <span id="totalNum">2</span></div>
+        <div class="progress-indicator">Word <span id="currentNum">1</span> / <span id="totalNum">20</span></div>
 
         <div id="mode-study" class="mode-content">
             <div class="card-display">
-                <div id="wordDisplay" class="word-display"><div><span class="consonant">j</span><span class="vowel">o</span><span class="consonant">y</span><span style="color:#94a3b8;">‧</span><span class="vowel">o</span><span class="vowel">u</span><span class="consonant">s</span></div><button class="btn-speaker" onclick="speakCurrentWord()">🔊</button></div>
-                <div id="chineseDisplay" class="meaning-display">令人愉快的</div>
+                <div id="wordDisplay" class="word-display"></div>
+                <div id="chineseDisplay" class="meaning-display"></div>
             </div>
             <div class="sentence-display">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
-                    <div id="sentenceContent" style="flex: 1;"><span class="sentence-en">The team had a joyous celebration after winning the game.</span><span class="sentence-cn">（球隊在贏得比賽後舉行了愉快的慶祝活動。）</span></div>
+                    <div id="sentenceContent" style="flex: 1;"></div>
                     <button class="btn btn-icon" style="width: 40px; height: 40px; font-size: 1.1rem; background: var(--accent-color); flex-shrink: 0;" onclick="speakSentence()" title="朗讀例句">🔊</button>
                 </div>
             </div>
@@ -76,62 +78,337 @@
 
 <footer>
     <div class="footer-btn-group">
-        <button class="footer-btn primary" onclick="exportDataToClipboard()">📤 匯出資料 (複製)</button>
-        <button class="footer-btn primary" onclick="importDataFromClipboard()">📥 匯入資料 (貼上)</button>
+        <button class="footer-btn primary" onclick="exportDataToClipboard()">📤 匯出資料</button>
+        <button class="footer-btn primary" onclick="importDataFromClipboard()">📥 匯入資料</button>
     </div>
-    <div style="font-size: 0.9rem; color: #94a3b8; cursor: pointer; margin-top: 15px;" onclick="downloadApp()">💾 備份完整程式 (下載 index.html)</div>
-    <div style="font-size: 0.9rem; color: #94a3b8; cursor: pointer; margin-top: 5px;" onclick="resetData()">↺ 重置所有資料</div>
+    <div style="font-size: 0.9rem; color: #94a3b8; margin-top: 15px;">資料來源：內建單字庫 (已寫入 index.html)</div>
 </footer>
 
 <div id="addModal" class="modal-overlay">
     <div class="modal">
-        <div class="modal-header"><h2>✨ 新增單字</h2></div>
-        <div class="modal-tabs"><button class="modal-tab-btn" onclick="switchModalTab('single')">單筆</button><button class="modal-tab-btn active" onclick="switchModalTab('bulk')">批量 (Smart Paste)</button></div>
+        <div class="modal-header"><h2>✨ 臨時新增 (不儲存)</h2></div>
+        <div class="modal-tabs"><button class="modal-tab-btn" onclick="switchModalTab('single')">單筆</button><button class="modal-tab-btn active" onclick="switchModalTab('bulk')">批量</button></div>
         <div class="modal-body">
             <div id="tab-single" class="modal-tab-content" style="display: none;">
                 <div class="form-group"><label>單字</label><input type="text" id="newWord"></div><div class="form-group"><label>中文</label><input type="text" id="newMeaning"></div>
                 <div class="modal-actions"><button class="btn" onclick="saveNewWord()">加入</button><button class="btn btn-outline" onclick="closeModal()">關閉</button></div>
             </div>
             <div id="tab-bulk" class="modal-tab-content" style="display: block;">
-                <div class="form-group"><label>群組名稱</label><input type="text" id="newSetName" placeholder="例：期末考範圍"></div>
+                <div class="form-group"><label>群組名稱</label><input type="text" id="newSetName" placeholder="臨時練習"></div>
                 <textarea id="bulkText" class="bulk-input" placeholder="貼上文字..."></textarea>
                 <div class="modal-actions"><button class="btn" onclick="parseAndImport()">加入</button><button class="btn btn-outline" onclick="closeModal()">關閉</button></div>
             </div>
         </div>
     </div>
 </div>
-<div id="dataModal" class="modal-overlay" style="display: none;"><div class="modal"><div class="modal-header"><h2>💾 資料傳輸</h2></div><div class="modal-body"><p id="dataModalDesc" style="color:var(--text-light);margin-bottom:10px;">請貼上代碼：</p><textarea id="dataTextarea" class="bulk-input" style="height:150px;"></textarea><div class="modal-actions"><button class="btn btn-outline" onclick="closeDataModal()">關閉</button><button id="dataActionBtn" class="btn">確認匯入</button></div></div></div></div>
+<div id="dataModal" class="modal-overlay"><div class="modal"><div class="modal-header"><h2>💾 資料傳輸</h2></div><div class="modal-body"><p id="dataModalDesc" style="color:var(--text-light);margin-bottom:10px;"></p><textarea id="dataTextarea" class="bulk-input" style="height:150px;"></textarea><div class="modal-actions"><button class="btn btn-outline" onclick="closeDataModal()">關閉</button><button id="dataActionBtn" class="btn">執行</button></div></div></div></div>
 <div id="resultModal" class="modal-overlay"><div class="modal" style="max-width: 400px;"><div class="modal-header"><h2>🏆 測驗完成！</h2></div><div class="modal-body"><p>偷看次數</p><h1 id="resultPeeks" style="font-size: 4rem; color: var(--primary-color);">0</h1><p id="resultComment"></p></div><div class="modal-actions" style="justify-content: center; padding: 20px;"><button class="btn btn-lg" onclick="closeResultModal()">再來一次</button></div></div></div>
 
 <script>
-    // 預設資料：這裡只放最基本的，不會覆蓋您手機裡的資料
-    const defaultSets = [{"name": "預設範例", "words": [{"id": 1, "word": "welcome", "syllable": "wel‧come", "meaning": "歡迎", "sentence": "Welcome to the class!"}]}];
+    // ==========================================
+    // 🚧 資料區：您提供的 JSON 已經全部放入這裡
+    // ==========================================
+    const dbSets = [
+    {
+        "name": "預設單字 (Default)",
+        "words": [
+            { "id": 1, "word": "joyous", "syllable": "joy‧ous", "meaning": "令人愉快的", "sentence": "The team had a joyous celebration after winning the game.（球隊在贏得比賽後舉行了愉快的慶祝活動。）" },
+            { "id": 2, "word": "accompany", "syllable": "ac‧com‧pa‧ny", "meaning": "陪伴；伴隨", "sentence": "My mom accompanied me to the interview.（我媽媽陪我去面試。）" }
+        ]
+    },
+    {
+        "name": "高二期末英文1",
+        "words": [
+            { "id": 1765272558212.5078, "word": "theory", "meaning": "理論；學說", "syllable": "the‧o‧ry", "sentence": "Darwin’s theory of evolution is one of the most important sets of ideas in the history of science." },
+            { "id": 1765272558212.9001, "word": "theory", "meaning": "理論；學說", "syllable": "the‧o‧ry", "sentence": "Literary theory refers to the study of methods for analyzing works of literature." },
+            { "id": 1765272558212.979, "word": "theoretical", "meaning": "理論上的", "syllable": "the‧o‧ret‧i‧cal", "sentence": "On a theoretical level, the idea of hiring more employees to increase production makes sense." },
+            { "id": 1765272558212.1035, "word": "psychology", "meaning": "心理學", "syllable": "psy‧chol‧o‧gy", "sentence": "Wes Craven majored in psychology, which taught him a lot about the human mind and thus helped him become a successful horror film director." },
+            { "id": 1765272558213.4016, "word": "psychological", "meaning": "心理的", "syllable": "psy‧cho‧log‧i‧cal", "sentence": "Child abuse often leads to psychological problems such as social anxiety and trust issues." },
+            { "id": 1765272558213.8877, "word": "demonstrate", "meaning": "表達；表現", "syllable": "dem‧on‧strate", "sentence": "Luke has demonstrated much excitement and interest in his new job." },
+            { "id": 1765272558213.7751, "word": "demonstrate", "meaning": "展示", "syllable": "dem‧on‧strate", "sentence": "Whenever a customer buys an electric scooter at this store, the clerks demonstrate how to change the batteries." },
+            { "id": 1765272558213.9978, "word": "demonstration", "meaning": "表達；示範", "syllable": "dem‧on‧stra‧tion", "sentence": "As a demonstration of his love for his wife, Paul worked for hours in the garden to plant her favorite flowers." },
+            { "id": 1765272558213.8833, "word": "demonstration", "meaning": "示範", "syllable": "dem‧on‧stra‧tion", "sentence": "The teacher gave the students a demonstration of how to solve the math problem." },
+            { "id": 1765272558213.2297, "word": "interpret", "meaning": "理解；詮釋", "syllable": "in‧ter‧pret", "sentence": "One can often interpret what a person is saying in a different language simply by observing his or her body language." },
+            { "id": 1765272558213.1675, "word": "interpretation", "meaning": "解釋；詮釋", "syllable": "in‧ter‧pre‧ta‧tion", "sentence": "The horror movie has attracted much attention because everyone has a different interpretation of its ending." },
+            { "id": 1765272558213.03, "word": "interpretation", "meaning": "解釋；詮釋", "syllable": "in‧ter‧pre‧ta‧tion", "sentence": "The beauty of poetry is that it is open to interpretation." },
+            { "id": 1765272558213.5823, "word": "stiff", "meaning": "僵硬的", "syllable": "stiff", "sentence": "After a long, hard day in the mines, the miners’ arms were stiff and sore from all the digging." },
+            { "id": 1765272558213.127, "word": "scratch", "meaning": "搔抓", "syllable": "scratch", "sentence": "According to the article, it’s better not to scratch an itchy mosquito bite because that just makes it worse." },
+            { "id": 1765272558213.055, "word": "scratch", "meaning": "抓痕；抓傷", "syllable": "scratch", "sentence": "Although the stray cat had very sharp claws, the vet only got one or two light scratches when he picked it up." },
+            { "id": 1765272558213.828, "word": "exhibit", "meaning": "表現；表露", "syllable": "ex‧hib‧it", "sentence": "The bull exhibited its dislike for the stranger by angrily scratching the ground and pointing its large, sharp horns at her." },
+            { "id": 1765272558213.8584, "word": "exhibit", "meaning": "展覽", "syllable": "ex‧hib‧it", "sentence": "Lots of paintings and drawings by famous artists were exhibited at the annual art fair." },
+            { "id": 1765272558213.5737, "word": "exhibition", "meaning": "展覽", "syllable": "ex‧hi‧bi‧tion", "sentence": "There is currently an exhibition of Chinese clothing from the Qing dynasty at the museum." },
+            { "id": 1765272558213.8037, "word": "exhibition", "meaning": "展覽", "syllable": "ex‧hi‧bi‧tion", "sentence": "Several of Picasso’s works, including Boy with a Pipe, were on exhibition at the art gallery during December." },
+            { "id": 1765272558213.2573, "word": "gesture", "meaning": "手勢；動作", "syllable": "ges‧ture", "sentence": "The traffic officer made a gesture at the driver to show that she could now safely turn right." },
+            { "id": 1765272558213.8699, "word": "gesture", "meaning": "示意", "syllable": "ges‧ture", "sentence": "Through the window, Clara saw her dad holding a large box and gesturing with his head for her to open the door." },
+            { "id": 1765272558213.4792, "word": "moreover", "meaning": "此外", "syllable": "more‧o‧ver", "sentence": "The Danube is the second longest river in Europe. Moreover, it’s the river that flows through the most countries in the world." },
+            { "id": 1765272558213.0303, "word": "conscious", "meaning": "意識到的", "syllable": "con‧scious", "sentence": "When Jim woke up after the accident, he slowly became conscious of the machine beeping next to his hospital bed." },
+            { "id": 1765272558213.886, "word": "consciousness", "meaning": "意識", "syllable": "con‧scious‧ness", "sentence": "The woman who had nearly drowned in the river regained consciousness after someone rescued her and did CPR on her." },
+            { "id": 1765272558213.5042, "word": "observe", "meaning": "觀察", "syllable": "ob‧serve", "sentence": "The class closely observed their yoga teacher’s graceful movements so that they could copy her." },
+            { "id": 1765272558213.4924, "word": "observation", "meaning": "觀察", "syllable": "ob‧ser‧va‧tion", "sentence": "After the surgery, Nella had to stay at the hospital under observation for three days." },
+            { "id": 1765272558213.1536, "word": "observation", "meaning": "觀察", "syllable": "ob‧ser‧va‧tion", "sentence": "The scientist made the discovery by conducting many experiments and making careful observations." },
+            { "id": 1765272558213.8787, "word": "reverse", "meaning": "相反的情況；相反事物", "syllable": "re‧verse", "sentence": "Some say Leila is a liar, but quite the reverse is true." },
+            { "id": 1765272558213.0457, "word": "reverse", "meaning": "反轉", "syllable": "re‧verse", "sentence": "In order to reverse the effects of climate change, humans will need to change how they live and what they consume." },
+            { "id": 1765272558213.4473, "word": "reverse", "meaning": "相反的", "syllable": "re‧verse", "sentence": "Sally is surprised that her three-year-old son can count from one to ten in reverse order." },
+            { "id": 1765272558213.8586, "word": "significant", "meaning": "重要的；顯著的", "syllable": "sig‧nif‧i‧cant", "sentence": "The researchers couldn’t find any significant evidence to support the theory." },
+            { "id": 1765272558213.9705, "word": "significance", "meaning": "重要性；意義", "syllable": "sig‧nif‧i‧cance", "sentence": "The development of the new drug has been of great significance to cancer treatment." }
+        ]
+    },
+    {
+        "name": "高二期末英文2",
+        "words": [
+            { "id": 1765272599011.192, "word": "circumstance", "meaning": "條件；狀況", "syllable": "cir‧cum‧stance", "sentence": "Under no circumstances can visitors to the museum touch or remove any artworks from the exhibition." },
+            { "id": 1765272599011.268, "word": "initially", "meaning": "最初的", "syllable": "in‧i‧tial", "sentence": "In the initial stages of the skyscraper’s construction, residents of the city complained that it was really ugly." },
+            { "id": 1765272599011.1638, "word": "glance", "meaning": "匆匆一瞥（n.）", "syllable": "glance", "sentence": "Mrs. Andrews gave an angry glance at her son when he kept scratching his leg in church." },
+            { "id": 1765272599011.1455, "word": "automatically", "meaning": "自動的", "syllable": "au‧to‧mat‧ic", "sentence": "Whenever a customer is about to enter, the automatic doors of the convenience store slide open on their own." },
+            { "id": 1765272599011.255, "word": "track", "meaning": "追蹤", "syllable": "track", "sentence": "With this app, one can track friends’ movements and spot their locations at any time." },
+            { "id": 1765272599011.2185, "word": "adore", "meaning": "愛慕；熱愛", "syllable": "a‧dore", "sentence": "Angie adores the man who saved her cat and believes him to be a hero." },
+            { "id": 1765272599011.4329, "word": "affection", "meaning": "愛意", "syllable": "af‧fec‧tion", "sentence": "One can tell the old lady has a deep affection for her grandson by the way her eyes light up whenever he’s around." },
+            { "id": 1765272599011.6484, "word": "interact", "meaning": "互動", "syllable": "in‧ter‧ac‧tion", "sentence": "Police officers should always try to be calm and professional in their interactions with members of the public." },
+            { "id": 1765272599011.466, "word": "meaningful", "meaning": "意味深長的；有意義的", "syllable": "mean‧ing‧ful", "sentence": "All the employees had prepared a lot for the meeting, so they had a very meaningful discussion and came up with some great ideas." },
+            { "id": 1765272599011.2698, "word": "fellow", "meaning": "同事；同僚", "syllable": "fel‧low", "sentence": "The manager thinks Ray isn’t very reliable, but he’s very popular among his fellows in the company." }
+        ]
+    },
+    {
+        "name": "高二期末英文3",
+        "words": [
+            { "id": 1765272653211.8538, "word": "account for", "meaning": "佔……；構成……的一部分", "syllable": "ac‧count for", "sentence": "International students account for half of the student population in the university." },
+            { "id": 1765272653211.7512, "word": "as well", "meaning": "此外；也", "syllable": "as well", "sentence": "All the students in the class loved Rita’s presentation. The teacher thought highly of it as well." },
+            { "id": 1765272653211.1384, "word": "in the case of", "meaning": "在這種情況下", "syllable": "un‧der the cir‧cum‧stan‧ces", "sentence": "Eric hated asking his parents for money, but he couldn’t afford the tuition. Under the circumstances, he had no other choice." },
+            { "id": 1765272653211.624, "word": "follow suit", "meaning": "照著做；跟著做", "syllable": "fol‧low suit", "sentence": "Once a baby in the hospital room starts crying, the others usually follow suit, so they’ll all be in tears." },
+            { "id": 1765272653211.0266, "word": "aside from", "meaning": "除了……之外", "syllable": "a‧side from", "sentence": "Aside from numerous teas and coffees, the drink shop also serves fresh juice and milkshakes." },
+            { "id": 1765272653211.6511, "word": "best of all", "meaning": "最棒的是", "syllable": "best of all", "sentence": "Leanne had a great day at the picnic and loved all the food. Best of all, she made several new friends." },
+            { "id": 1765272653211.4297, "word": "albert mehrabian", "meaning": "艾伯特·麥拉賓（提出 7–38–55 法則的心理學家）", "syllable": "Al‧bert Me‧hra‧bi‧an", "sentence": "Albert Mehrabian is famous for his study showing that body language is very important in communication." },
+            { "id": 1765272653211.1653, "word": "telltale", "meaning": "無法掩飾的；透露內情的", "syllable": "tell‧tale", "sentence": "Her shaky voice was a telltale sign that she was nervous." },
+            { "id": 1765272653211.163, "word": "outward", "meaning": "朝外的；外表的", "syllable": "out‧ward", "sentence": "His outward appearance looked calm, but he was very worried inside." },
+            { "id": 1765272653211.504, "word": "falsehood", "meaning": "謊言", "syllable": "false‧hood", "sentence": "The teacher warned the students not to spread any falsehoods online." },
+            { "id": 1765272653211.5605, "word": "telling", "meaning": "顯露內心活動的；透露真相的", "syllable": "tell‧ing", "sentence": "Her smile was small but telling, showing she agreed with the idea." },
+            { "id": 1765272653211.4443, "word": "subconsciously", "meaning": "潛意識地", "syllable": "sub‧con‧scious‧ly", "sentence": "He subconsciously tapped his foot while waiting for the test results." }
+        ]
+    }
+];
+    // ==========================================
 
-    const FORCE_UPDATE_FROM_CODE = false; // 設定為 false：優先使用瀏覽器內的舊資料
+    // 強制設定：每次開啟都使用上面寫死的資料，確保學生看到的一定是這些單字
+    const FORCE_UPDATE_FROM_CODE = true; 
 
-    let state = { wordSets: [], currentSetIndex: 0, currentIndex: 0, mode: 'study', voices: [], bestVoice: null, chineseVoice: null, blockGuess: [], clozeOrder: [], clozeCurrentIndex: 0, clozePeeksTotal: 0, isPeeking: false };
+    let state = {
+        wordSets: [],
+        currentSetIndex: 0,
+        currentIndex: 0,
+        mode: 'study',
+        voices: [],
+        bestVoice: null,
+        chineseVoice: null,
+        blockGuess: [],
+        clozeOrder: [],
+        clozeCurrentIndex: 0,
+        clozePeeksTotal: 0,
+        isPeeking: false
+    };
 
-    function init() { loadData(); initVoices(); renderSetSelect(); updateUI(); document.getElementById('dictInput').addEventListener('keypress', (e) => { if(e.key==='Enter') checkDictation(); }); document.getElementById('clozeInput').addEventListener('keypress', (e) => { if(e.key==='Enter') checkCloze(); }); }
+    function init() {
+        loadData();
+        initVoices();
+        renderSetSelect();
+        updateUI();
+        document.getElementById('dictInput').addEventListener('keypress', (e) => { if(e.key==='Enter') checkDictation(); });
+        document.getElementById('clozeInput').addEventListener('keypress', (e) => { if(e.key==='Enter') checkCloze(); });
+    }
 
     function loadData() {
-        const storedSets = localStorage.getItem('spellingBeeSets');
-        if (storedSets) {
-            try { state.wordSets = JSON.parse(storedSets); } catch(e) { state.wordSets = JSON.parse(JSON.stringify(defaultSets)); }
-        } else {
-            state.wordSets = JSON.parse(JSON.stringify(defaultSets));
+        // 因為設定了 FORCE_UPDATE_FROM_CODE = true，所以會直接載入程式碼裡的 dbSets
+        console.log("Loading hardcoded data...");
+        state.wordSets = JSON.parse(JSON.stringify(dbSets));
+        // 順便更新 localStorage，但下次重新整理還是會優先讀取程式碼
+        localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets));
+    }
+
+    // --- UI 與 邏輯 (精簡版) ---
+    function renderSetSelect() {
+        const select = document.getElementById('setSelect');
+        select.innerHTML = '';
+        state.wordSets.forEach((set, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.text = `${set.name} (${set.words.length})`;
+            select.appendChild(option);
+        });
+        if (state.currentSetIndex >= state.wordSets.length) state.currentSetIndex = 0;
+        select.value = state.currentSetIndex;
+    }
+
+    function changeSet() {
+        state.currentSetIndex = parseInt(document.getElementById('setSelect').value);
+        state.currentIndex = 0;
+        if (state.mode === 'cloze') initClozeMode();
+        updateUI();
+    }
+
+    function initVoices() {
+        function setV() {
+            state.voices = window.speechSynthesis.getVoices();
+            state.bestVoice = state.voices.find(v => v.name.includes("Google US")) || state.voices.find(v => v.lang === "en-US") || state.voices[0];
+            state.chineseVoice = state.voices.find(v => v.lang.includes("zh-TW")) || state.voices.find(v => v.lang.includes("zh"));
         }
-        saveSetsToStorage();
+        setV(); speechSynthesis.onvoiceschanged = setV;
     }
-    function saveSetsToStorage() { localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets)); }
-    function resetData() { if(confirm("確定重置？資料會清空喔！")) { localStorage.removeItem('spellingBeeSets'); location.reload(); } }
-    function downloadApp() {
-        let html = document.documentElement.outerHTML;
-        const blob = new Blob([html], {type: 'text/html'});
-        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'spelling_bee_backup.html'; a.click();
+
+    function speakText(txt, isZh=false) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(txt);
+        u.voice = isZh ? state.chineseVoice : state.bestVoice;
+        u.lang = isZh ? "zh-TW" : "en-US";
+        u.rate = isZh ? 1.1 : 0.8;
+        window.speechSynthesis.speak(u);
     }
+    
+    function speakCurrentWord() { const w=getCurrentWord(); if(w) speakText(w.word); }
+    function speakSentence() { 
+        const w=getCurrentWord(); if(!w||!w.sentence)return; 
+        let t=w.sentence; const match=t.match(/[\u4e00-\u9fa5（]/);
+        if(match) t=t.substring(0, match.index);
+        speakText(t); 
+    }
+
+    function getCurrentWord() {
+        const words = state.wordSets[state.currentSetIndex].words;
+        if(words.length===0) return null;
+        if(state.mode==='cloze') return words[state.clozeOrder[state.clozeCurrentIndex]];
+        return words[state.currentIndex];
+    }
+
+    function updateUI() {
+        const w = getCurrentWord();
+        const total = state.wordSets[state.currentSetIndex].words.length;
+        if(!w) { document.getElementById('wordDisplay').innerText="無資料"; return; }
+        
+        const isCloze = state.mode==='cloze';
+        document.getElementById('btnPrev').style.visibility = isCloze?'hidden':'visible';
+        document.getElementById('btnNext').style.visibility = isCloze?'hidden':'visible';
+        document.getElementById('currentNum').innerText = isCloze?(state.clozeCurrentIndex+1):(state.currentIndex+1);
+        document.getElementById('totalNum').innerText = total;
+
+        if(state.mode==='study') renderStudy(w);
+        else if(state.mode==='block') renderBlock(w);
+        else if(state.mode==='dictation') renderDictation(w);
+        else if(state.mode==='cloze') renderCloze(w);
+    }
+
+    function prevWord() { if(state.currentIndex>0) {state.currentIndex--; updateUI();} }
+    function nextWord() { 
+        const len = state.wordSets[state.currentSetIndex].words.length;
+        if(state.currentIndex < len-1) {state.currentIndex++; updateUI();} 
+    }
+    function setMode(m) {
+        state.mode=m;
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.tab-btn')[['study','block','dictation','cloze'].indexOf(m)].classList.add('active');
+        document.querySelectorAll('.mode-content').forEach(d=>d.style.display='none');
+        document.getElementById('mode-'+m).style.display='block';
+        if(m==='cloze') initClozeMode(); else updateUI();
+    }
+
+    // --- Render Logic ---
+    function renderStudy(w) {
+        let html=''; const t=w.syllable||w.word;
+        for(let c of t) {
+            if(/[aeiou]/i.test(c)) html+=`<span class="vowel">${c}</span>`;
+            else if(/[a-z]/i.test(c)) html+=`<span class="consonant">${c}</span>`;
+            else html+=`<span style="color:#94a3b8;">${c}</span>`;
+        }
+        document.getElementById('wordDisplay').innerHTML = `<div>${html}</div><button class="btn-speaker" onclick="speakCurrentWord()">🔊</button>`;
+        document.getElementById('chineseDisplay').innerText = w.meaning;
+        const div = document.getElementById('sentenceContent');
+        const split = (w.sentence||"").search(/[\u4e00-\u9fa5（]/);
+        if(split!==-1) div.innerHTML = `<span class="sentence-en">${w.sentence.substring(0,split)}</span><span class="sentence-cn">${w.sentence.substring(split)}</span>`;
+        else div.innerHTML = `<span class="sentence-en">${w.sentence||""}</span>`;
+    }
+
+    function renderBlock(w) {
+        document.getElementById('blockMeaning').innerText = w.meaning;
+        state.blockGuess=[]; const pool=document.getElementById('blockPool'); const ans=document.getElementById('blockAnswer');
+        pool.innerHTML=''; ans.innerHTML='';
+        const clean = w.word.replace(/[^a-zA-Z]/g,'');
+        clean.split('').sort(()=>Math.random()-0.5).forEach(c=>{
+            const b=document.createElement('div'); b.className='letter-btn'; b.innerText=c;
+            b.onclick=(e)=>addBlock(c,e.currentTarget); pool.appendChild(b);
+        });
+        document.getElementById('blockFeedback').className='feedback-msg';
+    }
+    function addBlock(c, btn) {
+        const w = getCurrentWord().word.replace(/[^a-zA-Z]/g,'');
+        if(state.blockGuess.length>=w.length) return;
+        if(c.toLowerCase()!==w[state.blockGuess.length].toLowerCase()) { btn.classList.add('shake'); setTimeout(()=>btn.classList.remove('shake'),400); return; }
+        btn.classList.add('used'); state.blockGuess.push({c, btn});
+        const ans=document.getElementById('blockAnswer'); ans.innerHTML='';
+        state.blockGuess.forEach((o,i)=>{
+            const b=document.createElement('div'); b.className='letter-btn'; b.innerText=o.c;
+            b.onclick=()=>{ state.blockGuess.splice(i).forEach(x=>x.btn.classList.remove('used')); renderBlockAnswer(); };
+            ans.appendChild(b);
+        });
+        function renderBlockAnswer(){
+             const ans=document.getElementById('blockAnswer'); ans.innerHTML='';
+             state.blockGuess.forEach((o,i)=>{
+                const b=document.createElement('div'); b.className='letter-btn'; b.innerText=o.c;
+                b.onclick=()=>{ state.blockGuess.splice(i).forEach(x=>x.btn.classList.remove('used')); renderBlockAnswer(); };
+                ans.appendChild(b);
+            });
+        }
+        if(state.blockGuess.map(x=>x.c).join('')===w) feedback('blockFeedback',true);
+    }
+
+    function renderDictation(w) {
+        document.getElementById('dictMeaning').innerText=w.meaning;
+        document.getElementById('dictHint').innerText=`${w.word[0]} ... ${w.word[w.word.length-1]}`;
+        document.getElementById('dictInput').value='';
+        document.getElementById('dictFeedback').className='feedback-msg';
+    }
+    function checkDictation() {
+        const v = document.getElementById('dictInput').value.trim().toLowerCase();
+        feedback('dictFeedback', v===getCurrentWord().word.toLowerCase());
+    }
+
+    function initClozeMode() {
+        state.clozeOrder = Array.from(state.wordSets[state.currentSetIndex].words.keys()).sort(()=>Math.random()-0.5);
+        state.clozeCurrentIndex=0; state.clozePeeksTotal=0; updateUI();
+    }
+    function renderCloze(w) {
+        document.getElementById('clozeMeaning').innerText="";
+        let s = w.sentence||""; const idx=s.search(/[\u4e00-\u9fa5（]/); if(idx!==-1) s=s.substring(0,idx);
+        const esc = w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const masked = s.replace(new RegExp(`\\b${esc}\\b`,'gi'), m=>`<span class="cloze-word">${m[0]}<span class="cloze-line"></span>${m[m.length-1]}</span>`);
+        document.getElementById('clozeSentence').innerHTML = masked;
+        document.getElementById('clozeHint').innerText = `${w.word[0]} ... ${w.word[w.word.length-1]}`;
+        document.getElementById('clozeInput').value=''; document.getElementById('clozeInput').disabled=false; document.getElementById('clozeInput').focus();
+        document.getElementById('clozeFeedback').className='feedback-msg';
+        document.getElementById('btnPeek').disabled=false; document.getElementById('btnPeek').innerText="👀 偷看答案 (3秒)";
+    }
+    function togglePeek() {
+        if(state.isPeeking) return; state.isPeeking=true; state.clozePeeksTotal++;
+        const h=document.getElementById('clozeHint'); const w=getCurrentWord().word;
+        h.innerText=w; h.style.color="#ef4444"; const b=document.getElementById('btnPeek'); b.disabled=true; b.innerText="記住答案...";
+        setTimeout(()=>{ h.innerText=`${w[0]} ... ${w[w.length-1]}`; h.style.color="var(--primary-color)"; state.isPeeking=false; b.disabled=false; b.innerText="👀 偷看答案 (3秒)"; },3000);
+    }
+    function checkCloze() {
+        const v=document.getElementById('clozeInput'); const w=getCurrentWord().word;
+        if(v.value.trim().toLowerCase()===w.toLowerCase()) {
+            feedback('clozeFeedback',true); v.disabled=true;
+            setTimeout(()=>{ if(state.clozeCurrentIndex<state.clozeOrder.length-1){state.clozeCurrentIndex++; updateUI();} else showResult(); },1500);
+        } else { feedback('clozeFeedback',false); v.classList.add('shake'); setTimeout(()=>v.classList.remove('shake'),400); }
+    }
+    function showResult() { document.getElementById('resultModal').style.display='flex'; document.getElementById('resultPeeks').innerText=state.clozePeeksTotal; document.getElementById('resultComment').innerText=state.clozePeeksTotal<3?"太神了！":"再接再厲！"; }
+    function closeResultModal() { document.getElementById('resultModal').style.display='none'; initClozeMode(); }
+
+    function feedback(id, ok) {
+        const el=document.getElementById(id); el.innerText=ok?"Correct! 🎉":"Try Again! 💪";
+        el.className=`feedback-msg show ${ok?'correct':'wrong'}`;
+        if(ok) speakText(ok?"Nice!":"加油", true);
+    }
+
+    // 匯出匯入功能
     function exportDataToClipboard() {
         const json = JSON.stringify(state.wordSets);
-        document.getElementById('dataModal').style.display = 'flex'; document.getElementById('dataModalDesc').innerText = '請複製下方代碼，存到記事本或傳給別人：';
+        document.getElementById('dataModal').style.display = 'flex'; document.getElementById('dataModalDesc').innerText = '請複製下方代碼：';
         const area = document.getElementById('dataTextarea'); area.value = json; area.select();
         const btn = document.getElementById('dataActionBtn'); btn.innerText = "複製代碼";
         btn.onclick = () => { navigator.clipboard.writeText(json).then(() => { alert("已複製！"); closeDataModal(); }).catch(()=>alert("請手動複製")); };
@@ -147,45 +424,44 @@
         };
     }
     function closeDataModal() { document.getElementById('dataModal').style.display = 'none'; }
-    function renderSetSelect() {
-        const select = document.getElementById('setSelect'); select.innerHTML = '';
-        state.wordSets.forEach((set, index) => { const option = document.createElement('option'); option.value = index; option.text = `${set.name} (${set.words.length})`; select.appendChild(option); });
-        if (state.currentSetIndex >= state.wordSets.length) state.currentSetIndex = 0; select.value = state.currentSetIndex;
-    }
-    function changeSet() { state.currentSetIndex = parseInt(document.getElementById('setSelect').value); state.currentIndex = 0; if (state.mode === 'cloze') initClozeMode(); updateUI(); }
-    function deleteCurrentSet() { if (state.wordSets.length <= 1) return alert("不能刪除最後一個群組"); if (confirm(`刪除「${state.wordSets[state.currentSetIndex].name}」？`)) { state.wordSets.splice(state.currentSetIndex, 1); state.currentSetIndex = 0; saveSetsToStorage(); renderSetSelect(); state.currentIndex = 0; updateUI(); } }
-    function initVoices() { function setV() { state.voices = window.speechSynthesis.getVoices(); state.bestVoice = state.voices.find(v => v.name.includes("Google US")) || state.voices.find(v => v.lang === "en-US") || state.voices[0]; state.chineseVoice = state.voices.find(v => v.lang.includes("zh-TW")) || state.voices.find(v => v.lang.includes("zh")); } setV(); speechSynthesis.onvoiceschanged = setV; }
-    function speakText(t, zh=false) { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(t); u.voice = zh ? state.chineseVoice : state.bestVoice; u.lang = zh ? "zh-TW" : "en-US"; u.rate = zh ? 1.1 : 0.8; window.speechSynthesis.speak(u); }
-    function speakCurrentWord() { const w=getCurrentWord(); if(w) speakText(w.word); }
-    function speakSentence() { const w=getCurrentWord(); if(!w||!w.sentence)return; let t=w.sentence; const m=t.match(/[\u4e00-\u9fa5（]/); if(m) t=t.substring(0, m.index); speakText(t); }
-    function getCurrentWord() { const w=state.wordSets[state.currentSetIndex].words; if(w.length===0)return null; return state.mode==='cloze'?w[state.clozeOrder[state.clozeCurrentIndex]]:w[state.currentIndex]; }
-    function updateUI() {
-        const w = getCurrentWord(); if(!w) { document.getElementById('wordDisplay').innerText="無資料"; return; }
-        const isCloze = state.mode==='cloze'; document.getElementById('btnPrev').style.visibility = isCloze?'hidden':'visible'; document.getElementById('btnNext').style.visibility = isCloze?'hidden':'visible'; document.getElementById('currentNum').innerText = isCloze?(state.clozeCurrentIndex+1):(state.currentIndex+1); document.getElementById('totalNum').innerText = state.wordSets[state.currentSetIndex].words.length;
-        if(state.mode==='study') renderStudy(w); else if(state.mode==='block') renderBlock(w); else if(state.mode==='dictation') renderDictation(w); else if(state.mode==='cloze') renderCloze(w);
-    }
-    function prevWord() { if(state.currentIndex>0) {state.currentIndex--; updateUI();} }
-    function nextWord() { if(state.currentIndex < state.wordSets[state.currentSetIndex].words.length-1) {state.currentIndex++; updateUI();} }
-    function setMode(m) { state.mode=m; document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[['study','block','dictation','cloze'].indexOf(m)].classList.add('active'); document.querySelectorAll('.mode-content').forEach(d=>d.style.display='none'); document.getElementById('mode-'+m).style.display='block'; if(m==='cloze') initClozeMode(); else updateUI(); }
-    function renderStudy(w) { let h=''; const t=w.syllable||w.word; for(let c of t) { if(/[aeiou]/i.test(c)) h+=`<span class="vowel">${c}</span>`; else if(/[a-z]/i.test(c)) h+=`<span class="consonant">${c}</span>`; else h+=`<span style="color:#94a3b8;">${c}</span>`; } document.getElementById('wordDisplay').innerHTML = `<div>${h}</div><button class="btn-speaker" onclick="speakCurrentWord()">🔊</button>`; document.getElementById('chineseDisplay').innerText = w.meaning; const d = document.getElementById('sentenceContent'); const s = (w.sentence||"").search(/[\u4e00-\u9fa5（]/); if(s!==-1) d.innerHTML = `<span class="sentence-en">${w.sentence.substring(0,s)}</span><span class="sentence-cn">${w.sentence.substring(s)}</span>`; else d.innerHTML = `<span class="sentence-en">${w.sentence||""}</span>`; }
-    function renderBlock(w) { document.getElementById('blockMeaning').innerText = w.meaning; state.blockGuess=[]; const p=document.getElementById('blockPool'); const a=document.getElementById('blockAnswer'); p.innerHTML=''; a.innerHTML=''; w.word.replace(/[^a-zA-Z]/g,'').split('').sort(()=>Math.random()-0.5).forEach(c=>{ const b=document.createElement('div'); b.className='letter-btn'; b.innerText=c; b.onclick=(e)=>addBlock(c,e.currentTarget); p.appendChild(b); }); document.getElementById('blockFeedback').className='feedback-msg'; }
-    function addBlock(c, btn) { const w = getCurrentWord().word.replace(/[^a-zA-Z]/g,''); if(state.blockGuess.length>=w.length) return; if(c.toLowerCase()!==w[state.blockGuess.length].toLowerCase()) { btn.classList.add('shake'); setTimeout(()=>btn.classList.remove('shake'),400); return; } btn.classList.add('used'); state.blockGuess.push({c, btn}); renderBlockAnswer(); if(state.blockGuess.map(x=>x.c).join('')===w) feedback('blockFeedback',true); }
-    function renderBlockAnswer(){ const a=document.getElementById('blockAnswer'); a.innerHTML=''; state.blockGuess.forEach((o,i)=>{ const b=document.createElement('div'); b.className='letter-btn'; b.innerText=o.c; b.onclick=()=>{ state.blockGuess.splice(i).forEach(x=>x.btn.classList.remove('used')); renderBlockAnswer(); }; a.appendChild(b); }); }
-    function renderDictation(w) { document.getElementById('dictMeaning').innerText=w.meaning; document.getElementById('dictHint').innerText=`${w.word[0]} ... ${w.word[w.word.length-1]}`; document.getElementById('dictInput').value=''; document.getElementById('dictFeedback').className='feedback-msg'; }
-    function checkDictation() { const v = document.getElementById('dictInput').value.trim().toLowerCase(); feedback('dictFeedback', v===getCurrentWord().word.toLowerCase()); }
-    function initClozeMode() { state.clozeOrder = Array.from(state.wordSets[state.currentSetIndex].words.keys()).sort(()=>Math.random()-0.5); state.clozeCurrentIndex=0; state.clozePeeksTotal=0; updateUI(); }
-    function renderCloze(w) { document.getElementById('clozeMeaning').innerText=""; let s = w.sentence||""; const idx=s.search(/[\u4e00-\u9fa5（]/); if(idx!==-1) s=s.substring(0,idx); const esc = w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); const masked = s.replace(new RegExp(`\\b${esc}\\b`,'gi'), m=>`<span class="cloze-word">${m[0]}<span class="cloze-line"></span>${m[m.length-1]}</span>`); document.getElementById('clozeSentence').innerHTML = masked; document.getElementById('clozeHint').innerText = `${w.word[0]} ... ${w.word[w.word.length-1]}`; document.getElementById('clozeInput').value=''; document.getElementById('clozeInput').disabled=false; document.getElementById('clozeInput').focus(); document.getElementById('clozeFeedback').className='feedback-msg'; document.getElementById('btnPeek').disabled=false; document.getElementById('btnPeek').innerText="👀 偷看答案 (3秒)"; }
-    function togglePeek() { if(state.isPeeking) return; state.isPeeking=true; state.clozePeeksTotal++; const h=document.getElementById('clozeHint'); const w=getCurrentWord().word; h.innerText=w; h.style.color="#ef4444"; const b=document.getElementById('btnPeek'); b.disabled=true; b.innerText="記住答案..."; setTimeout(()=>{ h.innerText=`${w[0]} ... ${w[w.length-1]}`; h.style.color="var(--primary-color)"; state.isPeeking=false; b.disabled=false; b.innerText="👀 偷看答案 (3秒)"; },3000); }
-    function checkCloze() { const v=document.getElementById('clozeInput'); const w=getCurrentWord().word; if(v.value.trim().toLowerCase()===w.toLowerCase()) { feedback('clozeFeedback',true); v.disabled=true; setTimeout(()=>{ if(state.clozeCurrentIndex<state.clozeOrder.length-1){state.clozeCurrentIndex++; updateUI();} else {document.getElementById('resultModal').style.display='flex'; document.getElementById('resultPeeks').innerText=state.clozePeeksTotal; document.getElementById('resultComment').innerText=state.clozePeeksTotal<3?"太神了！":"再接再厲！";} },1500); } else { feedback('clozeFeedback',false); v.classList.add('shake'); setTimeout(()=>v.classList.remove('shake'),400); } }
-    function closeResultModal() { document.getElementById('resultModal').style.display='none'; initClozeMode(); }
-    function feedback(id, ok) { const el=document.getElementById(id); el.innerText=ok?"Correct! 🎉":"Try Again! 💪"; el.className=`feedback-msg show ${ok?'correct':'wrong'}`; if(ok) speakText(ok?"Nice!":"加油", true); }
+    
+    // 臨時新增功能 (不儲存到 dbSets)
     function openModal() { document.getElementById('addModal').style.display='flex'; switchModalTab('single'); }
     function closeModal() { document.getElementById('addModal').style.display='none'; }
-    function switchModalTab(t) { document.querySelectorAll('.modal-tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.modal-tab-content').forEach(c=>c.style.display='none'); document.querySelectorAll('.modal-tab-btn')[t==='single'?0:1].classList.add('active'); document.getElementById('tab-'+t).style.display='block'; }
-    function saveNewWord() { const w=document.getElementById('newWord').value.trim().toLowerCase(); const m=document.getElementById('newMeaning').value.trim(); if(!w||!m) return alert("請輸入"); state.wordSets[state.currentSetIndex].words.push({id:Date.now(), word:w, meaning:m, syllable:w, sentence:""}); localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets)); closeModal(); updateUI(); }
-    function parseAndImport() { const txt=document.getElementById('bulkText').value; const name=document.getElementById('newSetName').value||"未命名"; let wArr=[]; let curr={}; const push=()=>{if(curr.w&&curr.m) wArr.push({id:Date.now()+Math.random(), word:curr.w, meaning:curr.m, syllable:curr.s||curr.w, sentence:curr.st});}; txt.split('\n').forEach(l=>{ l=l.trim(); if(!l)return; const m=l.match(/^\d+\.\s*([a-zA-Z\s\-]+)/); if(m){push(); curr={w:m[1].trim().toLowerCase(),s:"",m:"",st:""}; return;} if(l.match(/音節|Syllable/i)) curr.s=l.replace(/^(音節|Syllable)[:：]/i,'').trim(); else if(l.match(/中文|Meaning/i)) curr.m=l.replace(/^(中文|Meaning)[:：]/i,'').trim(); else if(l.match(/例句|Sentence/i)) curr.st=l.replace(/^(例句|Sentence)[:：]/i,'').trim(); }); push(); if(wArr.length>0) { state.wordSets.push({name, words:wArr}); localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets)); closeModal(); renderSetSelect(); state.currentSetIndex=state.wordSets.length-1; state.currentIndex=0; updateUI(); } else alert("格式不符"); }
+    function switchModalTab(t) {
+        document.querySelectorAll('.modal-tab-btn').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.modal-tab-content').forEach(c=>c.style.display='none');
+        document.querySelectorAll('.modal-tab-btn')[t==='single'?0:1].classList.add('active');
+        document.getElementById('tab-'+t).style.display='block';
+    }
+    function saveNewWord() {
+        const w=document.getElementById('newWord').value.trim().toLowerCase();
+        const m=document.getElementById('newMeaning').value.trim();
+        if(!w||!m) return alert("請輸入");
+        state.wordSets[state.currentSetIndex].words.push({id:Date.now(), word:w, meaning:m, syllable:w, sentence:""});
+        localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets));
+        closeModal(); updateUI();
+    }
+    function parseAndImport() {
+        const txt=document.getElementById('bulkText').value; const name=document.getElementById('newSetName').value||"未命名";
+        let wArr=[]; let curr={};
+        const push=()=>{if(curr.w&&curr.m) wArr.push({id:Date.now()+Math.random(), word:curr.w, meaning:curr.m, syllable:curr.s||curr.w, sentence:curr.st});};
+        txt.split('\n').forEach(l=>{
+            l=l.trim(); if(!l)return;
+            const m=l.match(/^\d+\.\s*([a-zA-Z\s\-]+)/);
+            if(m){push(); curr={w:m[1].trim().toLowerCase(),s:"",m:"",st:""}; return;}
+            if(l.match(/音節|Syllable/i)) curr.s=l.replace(/^(音節|Syllable)[:：]/i,'').trim();
+            else if(l.match(/中文|Meaning/i)) curr.m=l.replace(/^(中文|Meaning)[:：]/i,'').trim();
+            else if(l.match(/例句|Sentence/i)) curr.st=l.replace(/^(例句|Sentence)[:：]/i,'').trim();
+        }); push();
+        if(wArr.length>0) {
+            state.wordSets.push({name, words:wArr});
+            localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets));
+            closeModal(); renderSetSelect(); state.currentSetIndex=state.wordSets.length-1; state.currentIndex=0; updateUI();
+        } else alert("格式不符");
+    }
 
     window.onload = init;
 </script>
-
-</body></html>
+</body>
+</html>
