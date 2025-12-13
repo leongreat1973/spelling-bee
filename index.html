@@ -5,34 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>高中英文拼字學習機 (Spelling Bee)</title>
     <style>
-        /* --- 核心樣式 (保持不變) --- */
-        :root{--primary-color:#0ea5e9;--primary-dark:#0284c7;--accent-color:#f59e0b;--bg-color:#f0f9ff;--card-bg:#ffffff;--text-main:#334155;--text-light:#64748b;--vowel-color:#ef4444;--consonant-color:#2563eb;--success:#22c55e;--error:#ef4444}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:var(--bg-color);color:var(--text-main);margin:0;padding:0;min-height:100vh;display:flex;flex-direction:column}header{background-color:var(--primary-color);color:white;padding:10px 15px;box-shadow:0 2px 4px rgba(0,0,0,.1)}.header-content{max-width:800px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}h1{margin:0;font-size:1.1rem;letter-spacing:1px;white-space:nowrap}.header-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.set-select{padding:6px 10px;border-radius:20px;border:none;background:rgba(255,255,255,.9);color:var(--primary-dark);font-weight:700;font-size:.9rem;max-width:180px}.icon-btn{background:rgba(255,255,255,.2);border:none;color:white;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:.2s}.icon-btn:hover{background:rgba(255,255,255,.3)}.icon-btn.danger:hover{background:#ef4444}.add-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:white;padding:6px 12px;border-radius:20px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:5px;transition:.2s}.add-btn:hover{background:rgba(255,255,255,.3)}.tabs{display:flex;max-width:800px;margin:20px auto 0;padding:0 15px;width:100%;gap:5px;overflow-x:auto}.tab-btn{flex:1;padding:12px;background:#e0f2fe;border:none;border-radius:10px 10px 0 0;cursor:pointer;font-weight:700;color:var(--text-light);transition:.2s;font-size:.95rem;white-space:nowrap}.tab-btn.active{background:var(--card-bg);color:var(--primary-dark);box-shadow:0 -2px 5px rgba(0,0,0,.05)}main{flex:1;width:100%;max-width:800px;margin:0 auto;background:var(--card-bg);padding:10px;border-radius:0 0 15px 15px;box-shadow:0 4px 6px rgba(0,0,0,.05);display:flex;flex-direction:row;align-items:center;justify-content:space-between;position:relative;overflow:hidden}.content-container{flex:1;display:flex;flex-direction:column;align-items:center;width:100%;max-width:100%;padding:0 10px}.progress-indicator{font-size:.9rem;color:var(--text-light);background:#f1f5f9;padding:4px 12px;border-radius:20px;margin-bottom:10px;align-self:center}.nav-arrow{background:0 0;border:none;font-size:2.5rem;color:#cbd5e1;cursor:pointer;padding:10px;transition:.2s;user-select:none;display:flex;align-items:center;justify-content:center;height:100%;border-radius:10px}.nav-arrow:hover{color:var(--primary-color);background-color:#f0f9ff}.nav-arrow:active{transform:scale(.9)}.nav-arrow:disabled{color:#f1f5f9;cursor:not-allowed}.card-display{width:100%;text-align:center;margin-bottom:20px}.word-display{font-size:3.5rem;font-weight:700;margin:10px 0;line-height:1.2;min-height:80px;word-break:break-word;display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap}.syllable-display{font-size:1.5rem;color:var(--text-light);margin-bottom:10px;font-family:'Courier New',monospace}.meaning-display{font-size:1.5rem;color:var(--primary-dark);margin-bottom:15px;font-weight:700;display:flex;justify-content:center;align-items:center;gap:10px}.sentence-display{background:#f8fafc;padding:15px;border-radius:10px;border-left:5px solid var(--accent-color);text-align:left;margin:10px 0;font-size:1.1rem;line-height:1.5;width:100%}.sentence-en{display:block;margin-bottom:8px;color:var(--text-main);font-weight:500}.sentence-cn{display:block;font-size:1rem;color:#475569;border-top:1px dashed #cbd5e1;padding-top:5px}.cloze-word{font-weight:700;color:var(--primary-color);margin:0 4px;white-space:nowrap}.cloze-line{display:inline-block;width:40px;border-bottom:2px solid var(--primary-color);margin:0 2px;vertical-align:middle;height:10px}.vowel{color:var(--vowel-color)}.consonant{color:var(--consonant-color)}.btn{background-color:var(--primary-color);color:white;border:none;padding:10px 20px;border-radius:50px;font-size:1rem;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:transform .1s,background .2s;box-shadow:0 2px 4px rgba(0,0,0,.2);margin:5px}.btn:active{transform:scale(.95)}.btn-outline{background:white;color:var(--primary-color);border:2px solid var(--primary-color)}.btn-lg{padding:15px 30px;font-size:1.2rem}.btn-icon{border-radius:50%;width:50px;height:50px;padding:0;justify-content:center}.btn-speaker{background-color:var(--accent-color);width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:none;cursor:pointer;color:white;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .1s}.btn-peek{background-color:#8b5cf6;color:white;padding:8px 16px;border-radius:20px;font-size:.9rem;border:none;cursor:pointer;margin-bottom:10px;box-shadow:0 2px 4px rgba(0,0,0,.2)}.btn-peek:disabled{background-color:#cbd5e1;cursor:default}.letter-pool,.answer-slot{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;min-height:60px;margin:10px 0}.letter-btn{width:45px;height:45px;background:white;border:2px solid var(--text-light);border-radius:8px;font-size:1.2rem;font-weight:700;color:var(--text-main);cursor:pointer;display:flex;justify-content:center;align-items:center;user-select:none;box-shadow:0 2px 0 rgba(0,0,0,.1);transition:.2s}.letter-btn.used{opacity:0;pointer-events:none}.answer-slot{background:#f1f5f9;border-radius:10px;padding:10px;border:2px dashed #cbd5e1}.answer-slot .letter-btn{border-color:var(--primary-color);color:var(--primary-color);background:white}@keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-5px)}100%{transform:translateX(0)}}.shake{animation:shake .4s;border-color:var(--error)!important;color:var(--error)!important;background-color:#fef2f2!important}.input-group{margin:20px 0;width:100%;max-width:400px}input[type=text]{width:100%;padding:15px;font-size:1.5rem;text-align:center;border:2px solid #cbd5e1;border-radius:10px;outline:none}input[type=text]:focus{border-color:var(--primary-color)}.hint-text{font-family:'Courier New',monospace;font-size:2.5rem;letter-spacing:5px;color:var(--primary-color);margin:10px 0;font-weight:700}footer{padding:15px;background:white;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;justify-content:center;align-items:center;position:sticky;bottom:0;gap:10px}.footer-btn-group{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.footer-btn{background-color:#64748b;color:white;border:none;padding:8px 15px;border-radius:5px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:5px}.footer-btn:hover{background-color:#475569}.footer-btn.primary{background-color:var(--primary-color)}.footer-btn.primary:hover{background-color:var(--primary-dark)}.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:center;padding:20px}.modal{background:white;padding:0;border-radius:15px;width:100%;max-width:500px;box-shadow:0 10px 25px rgba(0,0,0,.2);overflow:hidden;display:flex;flex-direction:column;max-height:90vh}.modal-header{padding:20px;background:var(--bg-color);border-bottom:1px solid #e2e8f0}.modal h2{margin:0;color:var(--text-main);text-align:center;font-size:1.4rem}.modal-tabs{display:flex;background:#e2e8f0}.modal-tab-btn{flex:1;padding:10px;border:none;background:0 0;cursor:pointer;font-weight:700;color:var(--text-light)}.modal-tab-btn.active{background:white;color:var(--primary-color)}.modal-body{padding:20px;overflow-y:auto;text-align:center}.form-group{margin-bottom:15px;text-align:left}.form-group label{display:block;margin-bottom:5px;font-weight:700;color:var(--text-light)}.form-group input{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:1rem}textarea.bulk-input{width:100%;height:200px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-family:monospace;font-size:.9rem;resize:vertical}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}.feedback-msg{font-size:1.2rem;font-weight:700;height:30px;margin-top:10px;opacity:0;transition:opacity .3s}.feedback-msg.show{opacity:1}.feedback-msg.correct{color:var(--success)}.feedback-msg.wrong{color:var(--error)}@media (max-width:600px){.word-display{font-size:2.2rem}.btn-lg{width:100%;justify-content:center}.tabs{overflow-x:auto;justify-content:flex-start}.header-content{padding:10px;justify-content:center}.letter-btn{width:38px;height:38px;font-size:1rem}.nav-arrow{font-size:1.8rem;padding:5px}main{padding:5px}.content-container{padding:0 5px}}
+        /* --- 核心樣式 --- */
+        :root{--primary-color:#0ea5e9;--primary-dark:#0284c7;--accent-color:#f59e0b;--bg-color:#f0f9ff;--card-bg:#ffffff;--text-main:#334155;--text-light:#64748b;--vowel-color:#ef4444;--consonant-color:#2563eb;--success:#22c55e;--error:#ef4444}
+        *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+        body{font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:var(--bg-color);color:var(--text-main);margin:0;padding:0;min-height:100vh;display:flex;flex-direction:column}
+        
+        /* Header 優化 */
+        header{background-color:var(--primary-color);color:white;padding:12px 15px;box-shadow:0 2px 4px rgba(0,0,0,.1); z-index: 10;}
+        .header-content{max-width:800px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:10px}
+        h1{margin:0;font-size:1.1rem;letter-spacing:1px;white-space:nowrap; overflow: hidden; text-overflow: ellipsis;}
+        
+        .header-controls{display:flex;align-items:center;gap:8px; flex-shrink: 0;}
+        
+        /* 改用按鈕代替下拉選單 */
+        .menu-btn {
+            background: white; color: var(--primary-color); border: none;
+            padding: 6px 12px; border-radius: 20px; font-weight: bold;
+            font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 5px;
+            box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+        }
+        .menu-btn:active { transform: scale(0.95); }
+
+        .add-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:white;padding:6px 12px;border-radius:20px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:5px;transition:.2s}
+        .add-btn:hover{background:rgba(255,255,255,.3)}
+
+        /* Tabs */
+        .tabs{display:flex;max-width:800px;margin:20px auto 0;padding:0 15px;width:100%;gap:5px;overflow-x:auto}
+        .tab-btn{flex:1;padding:12px;background:#e0f2fe;border:none;border-radius:10px 10px 0 0;cursor:pointer;font-weight:700;color:var(--text-light);transition:.2s;font-size:.95rem;white-space:nowrap}
+        .tab-btn.active{background:var(--card-bg);color:var(--primary-dark);box-shadow:0 -2px 5px rgba(0,0,0,.05)}
+
+        /* Main */
+        main{flex:1;width:100%;max-width:800px;margin:0 auto;background:var(--card-bg);padding:10px;border-radius:0 0 15px 15px;box-shadow:0 4px 6px rgba(0,0,0,.05);display:flex;flex-direction:row;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
+        .content-container{flex:1;display:flex;flex-direction:column;align-items:center;width:100%;max-width:100%;padding:0 10px}
+        
+        /* Progress & Words */
+        .progress-indicator{font-size:.9rem;color:var(--text-light);background:#f1f5f9;padding:4px 12px;border-radius:20px;margin-bottom:10px;align-self:center}
+        .nav-arrow{background:0 0;border:none;font-size:2.5rem;color:#cbd5e1;cursor:pointer;padding:10px;transition:.2s;user-select:none;display:flex;align-items:center;justify-content:center;height:100%;border-radius:10px; min-width: 40px;}
+        .nav-arrow:hover{color:var(--primary-color);background-color:#f0f9ff}
+        .nav-arrow:active{transform:scale(.9)}
+
+        .card-display{width:100%;text-align:center;margin-bottom:20px}
+        .word-display{font-size:3.2rem;font-weight:700;margin:10px 0;line-height:1.2;min-height:80px;word-break:break-word;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap; color: var(--text-main);}
+        .meaning-display{font-size:1.4rem;color:var(--primary-dark);margin-bottom:15px;font-weight:700;display:flex;justify-content:center;align-items:center;gap:10px}
+        
+        .sentence-display{background:#f8fafc;padding:15px;border-radius:10px;border-left:5px solid var(--accent-color);text-align:left;margin:10px 0;font-size:1.1rem;line-height:1.5;width:100%}
+        .sentence-en{display:block;margin-bottom:8px;color:var(--text-main);font-weight:500}
+        .sentence-cn{display:block;font-size:1rem;color:#475569;border-top:1px dashed #cbd5e1;padding-top:5px}
+        .cloze-word{font-weight:700;color:var(--primary-color);margin:0 4px;white-space:nowrap}
+        .cloze-line{display:inline-block;width:40px;border-bottom:2px solid var(--primary-color);margin:0 2px;vertical-align:middle;height:10px}
+        .vowel{color:var(--vowel-color)}.consonant{color:var(--consonant-color)}
+        
+        /* Buttons & Inputs */
+        .btn{background-color:var(--primary-color);color:white;border:none;padding:10px 20px;border-radius:50px;font-size:1rem;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:transform .1s,background .2s;box-shadow:0 2px 4px rgba(0,0,0,.2);margin:5px}
+        .btn:active{transform:scale(.95)}
+        .btn-outline{background:white;color:var(--primary-color);border:2px solid var(--primary-color)}
+        .btn-lg{padding:12px 24px;font-size:1.1rem;width: 100%; justify-content: center;}
+        .btn-icon{border-radius:50%;width:40px;height:40px;padding:0;justify-content:center; font-size: 1.2rem;}
+        .btn-speaker{background-color:var(--accent-color);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:none;cursor:pointer;color:white;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .1s}
+        .btn-peek{background-color:#8b5cf6;color:white;padding:8px 16px;border-radius:20px;font-size:.9rem;border:none;cursor:pointer;margin-bottom:10px;box-shadow:0 2px 4px rgba(0,0,0,.2)}
+        
+        /* Games */
+        .letter-pool,.answer-slot{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;min-height:60px;margin:10px 0}
+        .letter-btn{width:42px;height:42px;background:white;border:2px solid var(--text-light);border-radius:8px;font-size:1.2rem;font-weight:700;color:var(--text-main);cursor:pointer;display:flex;justify-content:center;align-items:center;user-select:none;box-shadow:0 2px 0 rgba(0,0,0,.1);transition:.2s}
+        .letter-btn.used{opacity:0;pointer-events:none}
+        .answer-slot{background:#f1f5f9;border-radius:10px;padding:10px;border:2px dashed #cbd5e1}
+        .answer-slot .letter-btn{border-color:var(--primary-color);color:var(--primary-color);background:white}
+        
+        .shake{animation:shake .4s;border-color:var(--error)!important;color:var(--error)!important;background-color:#fef2f2!important}
+        @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-5px)}100%{transform:translateX(0)}}
+        
+        .input-group{margin:15px 0;width:100%;max-width:400px}
+        input[type=text]{width:100%;padding:12px;font-size:1.3rem;text-align:center;border:2px solid #cbd5e1;border-radius:10px;outline:none}
+        input[type=text]:focus{border-color:var(--primary-color)}
+        .hint-text{font-family:'Courier New',monospace;font-size:2rem;letter-spacing:3px;color:var(--primary-color);margin:10px 0;font-weight:700}
+        
+        /* Footer */
+        footer{padding:15px;background:white;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px; text-align: center;}
+        .footer-btn-group{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+        .footer-btn{background-color:#64748b;color:white;border:none;padding:6px 12px;border-radius:5px;cursor:pointer;font-size:.8rem;display:flex;align-items:center;gap:5px}
+
+        /* Modals */
+        .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:100;justify-content:center;align-items:center;padding:15px}
+        .modal{background:white;padding:0;border-radius:15px;width:100%;max-width:500px;box-shadow:0 10px 25px rgba(0,0,0,.3);overflow:hidden;display:flex;flex-direction:column;max-height:85vh; animation: slideUp 0.3s ease-out;}
+        @keyframes slideUp { from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        
+        .modal-header{padding:15px;background:var(--bg-color);border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items: center;}
+        .modal h2{margin:0;color:var(--text-main);font-size:1.2rem}
+        .close-btn {background: none; border: none; font-size: 1.5rem; color: var(--text-light); cursor: pointer;}
+        
+        .modal-body{padding:15px;overflow-y:auto;text-align:center}
+        
+        /* 課程選擇選單樣式 */
+        .course-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        .course-item { 
+            padding: 15px; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; 
+            cursor: pointer; text-align: left; transition: 0.2s; display: flex; justify-content: space-between; align-items: center;
+        }
+        .course-item:hover { background: #f0f9ff; border-color: var(--primary-color); }
+        .course-item.active { background: var(--primary-color); color: white; border-color: var(--primary-dark); }
+        .course-count { font-size: 0.85rem; background: rgba(0,0,0,0.1); padding: 2px 8px; border-radius: 10px; }
+
+        .form-group{margin-bottom:15px;text-align:left}
+        .form-group label{display:block;margin-bottom:5px;font-weight:700;color:var(--text-light)}
+        .form-group input{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:1rem}
+        textarea.bulk-input{width:100%;height:150px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-family:monospace;font-size:.9rem;resize:vertical}
+        .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+        
+        .feedback-msg{font-size:1.2rem;font-weight:700;height:30px;margin-top:10px;opacity:0;transition:opacity .3s}
+        .feedback-msg.show{opacity:1}
+        .feedback-msg.correct{color:var(--success)}
+        .feedback-msg.wrong{color:var(--error)}
+
+        @media (max-width:600px){
+            .word-display{font-size:2.5rem}
+            header { padding: 8px 10px; }
+            h1 { font-size: 1rem; }
+            .menu-btn { font-size: 0.85rem; padding: 5px 10px; }
+            .nav-arrow{font-size:2rem;padding:5px}
+            main{padding:5px}
+        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="header-content">
-        <h1>🎓 高中英文拼字學習機</h1>
+        <h1>🎓 英文拼字學習機</h1>
         <div class="header-controls">
-            <select id="setSelect" class="set-select" onchange="changeSet()"></select>
-            <button class="add-btn" onclick="openModal()">➕ 臨時新增</button>
+            <button class="menu-btn" onclick="openCourseModal()">📚 切換課程</button>
+            <button class="add-btn" onclick="openAddModal()">➕</button>
         </div>
     </div>
 </header>
 
 <div class="tabs">
-    <button class="tab-btn active" onclick="setMode('study')">📖 學習模式</button>
-    <button class="tab-btn" onclick="setMode('block')">🧩 積木重組</button>
-    <button class="tab-btn" onclick="setMode('dictation')">✍️ 聽寫測驗</button>
+    <button class="tab-btn active" onclick="setMode('study')">📖 學習</button>
+    <button class="tab-btn" onclick="setMode('block')">🧩 積木</button>
+    <button class="tab-btn" onclick="setMode('dictation')">✍️ 聽寫</button>
     <button class="tab-btn" onclick="setMode('cloze')">🕵️ 克漏字</button>
 </div>
 
 <main id="app">
-    <button class="nav-arrow" id="btnPrev" onclick="prevWord()" title="上一筆" style="visibility: visible;">❮</button>
+    <button class="nav-arrow" id="btnPrev" onclick="prevWord()">❮</button>
 
     <div class="content-container">
-        <div class="progress-indicator">Word <span id="currentNum">1</span> / <span id="totalNum">20</span></div>
+        <div style="font-size: 0.8rem; color: var(--primary-dark); margin-top: 5px; font-weight: bold;" id="currentSetNameDisplay">預設單字</div>
+        <div class="progress-indicator"><span id="currentNum">1</span> / <span id="totalNum">20</span></div>
 
         <div id="mode-study" class="mode-content">
             <div class="card-display">
@@ -42,7 +160,7 @@
             <div class="sentence-display">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
                     <div id="sentenceContent" style="flex: 1;"></div>
-                    <button class="btn btn-icon" style="width: 40px; height: 40px; font-size: 1.1rem; background: var(--accent-color); flex-shrink: 0;" onclick="speakSentence()" title="朗讀例句">🔊</button>
+                    <button class="btn btn-icon" style="background: var(--accent-color); color: white;" onclick="speakSentence()">🔊</button>
                 </div>
             </div>
         </div>
@@ -57,52 +175,60 @@
         <div id="mode-dictation" class="mode-content" style="display:none; text-align: center;">
             <div class="meaning-display" style="margin-top:30px;"><span id="dictMeaning"></span><button class="btn-speaker" onclick="speakCurrentWord()">🔊</button></div>
             <div id="dictHint" class="hint-text"></div>
-            <div class="input-group"><input type="text" id="dictInput" placeholder="請輸入完整單字..." autocomplete="off"></div>
-            <button class="btn btn-lg" onclick="checkDictation()">送出檢查</button>
+            <div class="input-group"><input type="text" id="dictInput" placeholder="輸入單字..." autocomplete="off"></div>
+            <button class="btn btn-lg" onclick="checkDictation()">檢查</button>
             <div id="dictFeedback" class="feedback-msg"></div>
         </div>
 
         <div id="mode-cloze" class="mode-content" style="display:none; text-align: center;">
             <div class="meaning-display" style="margin-top:20px;"><span id="clozeMeaning"></span></div>
-            <div class="sentence-display" style="margin: 15px 0; text-align: center; font-size: 1.2rem; background: #e0f2fe; border: 2px solid var(--primary-color);"><span id="clozeSentence"></span></div>
-            <button id="btnPeek" class="btn-peek" onclick="togglePeek()">👀 偷看答案 (3秒)</button>
+            <div class="sentence-display" style="margin: 15px 0; font-size: 1.2rem; background: #e0f2fe; border: 2px solid var(--primary-color);"><span id="clozeSentence"></span></div>
+            <button id="btnPeek" class="btn-peek" onclick="togglePeek()">👀 偷看 (3秒)</button>
             <div id="clozeHint" class="hint-text"></div>
-            <div class="input-group" style="margin-top: 5px;"><input type="text" id="clozeInput" placeholder="填入單字..." autocomplete="off"></div>
-            <button class="btn btn-lg" onclick="checkCloze()">送出檢查</button>
+            <div class="input-group" style="margin-top: 5px;"><input type="text" id="clozeInput" placeholder="輸入..." autocomplete="off"></div>
+            <button class="btn btn-lg" onclick="checkCloze()">檢查</button>
             <div id="clozeFeedback" class="feedback-msg"></div>
         </div>
     </div>
 
-    <button class="nav-arrow" id="btnNext" onclick="nextWord()" title="下一筆" style="visibility: visible;">❯</button>
+    <button class="nav-arrow" id="btnNext" onclick="nextWord()">❯</button>
 </main>
 
 <footer>
     <div class="footer-btn-group">
-        <button class="footer-btn primary" onclick="exportDataToClipboard()">📤 匯出資料</button>
-        <button class="footer-btn primary" onclick="importDataFromClipboard()">📥 匯入資料</button>
+        <button class="footer-btn primary" onclick="exportDataToClipboard()">📤 匯出</button>
+        <button class="footer-btn primary" onclick="importDataFromClipboard()">📥 匯入</button>
     </div>
-    <div style="font-size: 0.9rem; color: #94a3b8; margin-top: 15px;">資料來源：內建單字庫 (已寫入 index.html)</div>
+    <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 10px;">資料來源：內建單字庫 (Level 3 & 4 Updated)</div>
 </footer>
 
-<div id="addModal" class="modal-overlay">
+<div id="courseModal" class="modal-overlay">
     <div class="modal">
-        <div class="modal-header"><h2>✨ 臨時新增 (不儲存)</h2></div>
-        <div class="modal-tabs"><button class="modal-tab-btn" onclick="switchModalTab('single')">單筆</button><button class="modal-tab-btn active" onclick="switchModalTab('bulk')">批量</button></div>
+        <div class="modal-header">
+            <h2>📚 選擇課程</h2>
+            <button class="close-btn" onclick="closeCourseModal()">×</button>
+        </div>
         <div class="modal-body">
-            <div id="tab-single" class="modal-tab-content" style="display: none;">
-                <div class="form-group"><label>單字</label><input type="text" id="newWord"></div><div class="form-group"><label>中文</label><input type="text" id="newMeaning"></div>
-                <div class="modal-actions"><button class="btn" onclick="saveNewWord()">加入</button><button class="btn btn-outline" onclick="closeModal()">關閉</button></div>
-            </div>
-            <div id="tab-bulk" class="modal-tab-content" style="display: block;">
-                <div class="form-group"><label>群組名稱</label><input type="text" id="newSetName" placeholder="臨時練習"></div>
-                <textarea id="bulkText" class="bulk-input" placeholder="貼上文字..."></textarea>
-                <div class="modal-actions"><button class="btn" onclick="parseAndImport()">加入</button><button class="btn btn-outline" onclick="closeModal()">關閉</button></div>
-            </div>
+            <ul id="courseList" class="course-list">
+                </ul>
         </div>
     </div>
 </div>
-<div id="dataModal" class="modal-overlay"><div class="modal"><div class="modal-header"><h2>💾 資料傳輸</h2></div><div class="modal-body"><p id="dataModalDesc" style="color:var(--text-light);margin-bottom:10px;"></p><textarea id="dataTextarea" class="bulk-input" style="height:150px;"></textarea><div class="modal-actions"><button class="btn btn-outline" onclick="closeDataModal()">關閉</button><button id="dataActionBtn" class="btn">執行</button></div></div></div></div>
-<div id="resultModal" class="modal-overlay"><div class="modal" style="max-width: 400px;"><div class="modal-header"><h2>🏆 測驗完成！</h2></div><div class="modal-body"><p>偷看次數</p><h1 id="resultPeeks" style="font-size: 4rem; color: var(--primary-color);">0</h1><p id="resultComment"></p></div><div class="modal-actions" style="justify-content: center; padding: 20px;"><button class="btn btn-lg" onclick="closeResultModal()">再來一次</button></div></div></div>
+
+<div id="addModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header"><h2>✨ 臨時新增 (不儲存)</h2><button class="close-btn" onclick="closeAddModal()">×</button></div>
+        <div class="modal-body">
+            <div class="form-group"><label>群組名稱</label><input type="text" id="newSetName" placeholder="自訂練習"></div>
+            <textarea id="bulkText" class="bulk-input" placeholder="貼上文字... (格式: 英文 中文)"></textarea>
+            <div class="modal-actions"><button class="btn" onclick="parseAndImport()">加入</button></div>
+        </div>
+    </div>
+</div>
+
+<div id="dataModal" class="modal-overlay"><div class="modal"><div class="modal-header"><h2>💾 資料傳輸</h2><button class="close-btn" onclick="closeDataModal()">×</button></div><div class="modal-body"><p id="dataModalDesc" style="color:var(--text-light);margin-bottom:10px;"></p><textarea id="dataTextarea" class="bulk-input" style="height:150px;"></textarea><div class="modal-actions"><button id="dataActionBtn" class="btn">執行</button></div></div></div></div>
+
+<div id="resultModal" class="modal-overlay"><div class="modal" style="max-width: 400px;"><div class="modal-header"><h2>🏆 完成！</h2></div><div class="modal-body"><p>偷看次數</p><h1 id="resultPeeks" style="font-size: 4rem; color: var(--primary-color);">0</h1><p id="resultComment"></p></div><div class="modal-actions" style="justify-content: center; padding: 20px;"><button class="btn btn-lg" onclick="closeResultModal()">再來一次</button></div></div></div>
 
 <script>
     // ==========================================
@@ -469,7 +595,6 @@
 ];
     // ==========================================
 
-    // 強制設定：每次開啟都使用上面寫死的資料，確保學生看到的一定是這些單字
     const FORCE_UPDATE_FROM_CODE = true; 
 
     let state = {
@@ -490,39 +615,46 @@
     function init() {
         loadData();
         initVoices();
-        renderSetSelect();
+        // Removed standard select render
         updateUI();
         document.getElementById('dictInput').addEventListener('keypress', (e) => { if(e.key==='Enter') checkDictation(); });
         document.getElementById('clozeInput').addEventListener('keypress', (e) => { if(e.key==='Enter') checkCloze(); });
     }
 
     function loadData() {
-        // 因為設定了 FORCE_UPDATE_FROM_CODE = true，所以會直接載入程式碼裡的 dbSets
         console.log("Loading hardcoded data...");
         state.wordSets = JSON.parse(JSON.stringify(dbSets));
-        // 順便更新 localStorage，但下次重新整理還是會優先讀取程式碼
         localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets));
     }
 
     // --- UI 與 邏輯 (精簡版) ---
-    function renderSetSelect() {
-        const select = document.getElementById('setSelect');
-        select.innerHTML = '';
+    function renderSetListInModal() {
+        const list = document.getElementById('courseList');
+        list.innerHTML = '';
         state.wordSets.forEach((set, index) => {
-            const option = document.createElement('option');
-            option.value = index;
-            option.text = `${set.name} (${set.words.length})`;
-            select.appendChild(option);
+            const li = document.createElement('li');
+            li.className = `course-item ${index === state.currentSetIndex ? 'active' : ''}`;
+            li.innerHTML = `<span>${set.name}</span> <span class="course-count">${set.words.length}字</span>`;
+            li.onclick = () => { selectSet(index); };
+            list.appendChild(li);
         });
-        if (state.currentSetIndex >= state.wordSets.length) state.currentSetIndex = 0;
-        select.value = state.currentSetIndex;
     }
 
-    function changeSet() {
-        state.currentSetIndex = parseInt(document.getElementById('setSelect').value);
+    function openCourseModal() {
+        renderSetListInModal();
+        document.getElementById('courseModal').style.display = 'flex';
+    }
+    
+    function closeCourseModal() {
+        document.getElementById('courseModal').style.display = 'none';
+    }
+
+    function selectSet(index) {
+        state.currentSetIndex = index;
         state.currentIndex = 0;
         if (state.mode === 'cloze') initClozeMode();
         updateUI();
+        closeCourseModal();
     }
 
     function initVoices() {
@@ -560,7 +692,12 @@
 
     function updateUI() {
         const w = getCurrentWord();
-        const total = state.wordSets[state.currentSetIndex].words.length;
+        const set = state.wordSets[state.currentSetIndex];
+        const total = set.words.length;
+        
+        // Update Header Name Display
+        document.getElementById('currentSetNameDisplay').innerText = set.name;
+
         if(!w) { document.getElementById('wordDisplay').innerText="無資料"; return; }
         
         const isCloze = state.mode==='cloze';
@@ -662,13 +799,13 @@
         document.getElementById('clozeHint').innerText = `${w.word[0]} ... ${w.word[w.word.length-1]}`;
         document.getElementById('clozeInput').value=''; document.getElementById('clozeInput').disabled=false; document.getElementById('clozeInput').focus();
         document.getElementById('clozeFeedback').className='feedback-msg';
-        document.getElementById('btnPeek').disabled=false; document.getElementById('btnPeek').innerText="👀 偷看答案 (3秒)";
+        document.getElementById('btnPeek').disabled=false; document.getElementById('btnPeek').innerText="👀 偷看 (3秒)";
     }
     function togglePeek() {
         if(state.isPeeking) return; state.isPeeking=true; state.clozePeeksTotal++;
         const h=document.getElementById('clozeHint'); const w=getCurrentWord().word;
         h.innerText=w; h.style.color="#ef4444"; const b=document.getElementById('btnPeek'); b.disabled=true; b.innerText="記住答案...";
-        setTimeout(()=>{ h.innerText=`${w[0]} ... ${w[w.length-1]}`; h.style.color="var(--primary-color)"; state.isPeeking=false; b.disabled=false; b.innerText="👀 偷看答案 (3秒)"; },3000);
+        setTimeout(()=>{ h.innerText=`${w[0]} ... ${w[w.length-1]}`; h.style.color="var(--primary-color)"; state.isPeeking=false; b.disabled=false; b.innerText="👀 偷看 (3秒)"; },3000);
     }
     function checkCloze() {
         const v=document.getElementById('clozeInput'); const w=getCurrentWord().word;
@@ -700,46 +837,53 @@
         btn.onclick = () => {
             try {
                 const data = JSON.parse(document.getElementById('dataTextarea').value);
-                if (Array.isArray(data) && confirm("這會覆蓋現有資料，確定嗎？")) { state.wordSets = data; localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets)); renderSetSelect(); updateUI(); closeDataModal(); alert("匯入成功！"); }
+                if (Array.isArray(data) && confirm("這會覆蓋現有資料，確定嗎？")) { state.wordSets = data; localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets)); updateUI(); closeDataModal(); alert("匯入成功！"); }
             } catch(e) { alert("代碼格式錯誤"); }
         };
     }
     function closeDataModal() { document.getElementById('dataModal').style.display = 'none'; }
     
     // 臨時新增功能 (不儲存到 dbSets)
-    function openModal() { document.getElementById('addModal').style.display='flex'; switchModalTab('single'); }
-    function closeModal() { document.getElementById('addModal').style.display='none'; }
-    function switchModalTab(t) {
-        document.querySelectorAll('.modal-tab-btn').forEach(b=>b.classList.remove('active'));
-        document.querySelectorAll('.modal-tab-content').forEach(c=>c.style.display='none');
-        document.querySelectorAll('.modal-tab-btn')[t==='single'?0:1].classList.add('active');
-        document.getElementById('tab-'+t).style.display='block';
-    }
-    function saveNewWord() {
-        const w=document.getElementById('newWord').value.trim().toLowerCase();
-        const m=document.getElementById('newMeaning').value.trim();
-        if(!w||!m) return alert("請輸入");
-        state.wordSets[state.currentSetIndex].words.push({id:Date.now(), word:w, meaning:m, syllable:w, sentence:""});
-        localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets));
-        closeModal(); updateUI();
-    }
+    function openAddModal() { document.getElementById('addModal').style.display='flex'; }
+    function closeAddModal() { document.getElementById('addModal').style.display='none'; }
+    
     function parseAndImport() {
         const txt=document.getElementById('bulkText').value; const name=document.getElementById('newSetName').value||"未命名";
         let wArr=[]; let curr={};
         const push=()=>{if(curr.w&&curr.m) wArr.push({id:Date.now()+Math.random(), word:curr.w, meaning:curr.m, syllable:curr.s||curr.w, sentence:curr.st});};
-        txt.split('\n').forEach(l=>{
-            l=l.trim(); if(!l)return;
-            const m=l.match(/^\d+\.\s*([a-zA-Z\s\-]+)/);
-            if(m){push(); curr={w:m[1].trim().toLowerCase(),s:"",m:"",st:""}; return;}
-            if(l.match(/音節|Syllable/i)) curr.s=l.replace(/^(音節|Syllable)[:：]/i,'').trim();
-            else if(l.match(/中文|Meaning/i)) curr.m=l.replace(/^(中文|Meaning)[:：]/i,'').trim();
-            else if(l.match(/例句|Sentence/i)) curr.st=l.replace(/^(例句|Sentence)[:：]/i,'').trim();
-        }); push();
+        
+        // 簡單解析模式: 假設使用者輸入 "apple 蘋果"
+        const lines = txt.split('\n');
+        // 嘗試進階解析或簡單解析
+        if (lines[0] && lines[0].includes("音節")) {
+            // 進階格式
+             lines.forEach(l=>{
+                l=l.trim(); if(!l)return;
+                const m=l.match(/^\d+\.\s*([a-zA-Z\s\-]+)/);
+                if(m){push(); curr={w:m[1].trim().toLowerCase(),s:"",m:"",st:""}; return;}
+                if(l.match(/音節|Syllable/i)) curr.s=l.replace(/^(音節|Syllable)[:：]/i,'').trim();
+                else if(l.match(/中文|Meaning/i)) curr.m=l.replace(/^(中文|Meaning)[:：]/i,'').trim();
+                else if(l.match(/例句|Sentence/i)) curr.st=l.replace(/^(例句|Sentence)[:：]/i,'').trim();
+            }); push();
+        } else {
+            // 簡單格式 "word meaning"
+            lines.forEach(l => {
+                const parts = l.trim().split(/\s+/);
+                if(parts.length >= 2) {
+                    const w = parts[0].toLowerCase();
+                    const m = parts.slice(1).join(' ');
+                    wArr.push({id:Date.now()+Math.random(), word:w, meaning:m, syllable:w, sentence:""});
+                }
+            });
+        }
+
         if(wArr.length>0) {
             state.wordSets.push({name, words:wArr});
             localStorage.setItem('spellingBeeSets', JSON.stringify(state.wordSets));
-            closeModal(); renderSetSelect(); state.currentSetIndex=state.wordSets.length-1; state.currentIndex=0; updateUI();
-        } else alert("格式不符");
+            closeAddModal(); 
+            // 直接切換到新群組
+            selectSet(state.wordSets.length-1);
+        } else alert("無法解析內容，請檢查格式");
     }
 
     window.onload = init;
